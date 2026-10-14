@@ -1,16 +1,25 @@
 class Solution:
-    
     def isAnagram(self, s: str, t: str) -> bool:
+        
+        if s == t:
+            return True
 
-        if len(s) != len(t):
+        hs_s = self.hash_set(s)
+        hs_t = self.hash_set(t)
+
+        if hs_s == hs_t:
+            return True
+        else:
             return False
 
-        s = sorted(s)
-        t = sorted(t)
+    def hash_set(self, ar):
 
-        for i,j in zip(s,t):
+        d = {}
 
-            if i != j:
-                return False
-
-        return True
+        for i in ar:
+            if i in d:
+                d[i]+=1
+            else:
+                d[i]=1
+        
+        return d
