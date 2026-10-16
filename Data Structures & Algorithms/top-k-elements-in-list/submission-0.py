@@ -1,14 +1,12 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         from collections import defaultdict
-        
-        d = defaultdict(int)
+
+        gr = defaultdict(int)
 
         for n in nums:
-
-            d[n] += 1
-
-        d_n = dict(sorted(d.items(), key=lambda x : x[1], reverse=True))
-
-        return list(d_n.keys())[:k]
+            gr[n] += 1
         
+        res = sorted(gr.items(), key = lambda k : k[1], reverse=True)
+
+        return [r[0] for r in res[:k]]
